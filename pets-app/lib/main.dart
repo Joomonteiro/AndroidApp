@@ -55,9 +55,15 @@ class _BuildListViewState extends State<BuildListView> {
       });
     });
   }
-
+  List<PetView>_getPetsView(){
+    var listaPetsView = new List<PetView>.generate(pets.length, (i) {
+    return PetView(pets[i]);    
+    });
+    return listaPetsView;
+  }
   _BuildListViewState() {
     _getPets();
+    
   }
   @override
   Widget build(BuildContext context) {
@@ -79,10 +85,8 @@ class _BuildListViewState extends State<BuildListView> {
   }
 
   listaPets() {
-    var listaPetsView = new List<PetView>.generate(pets.length, (i) {
-        return PetView(pets[i]);    
-        });
-        print(listaPetsView);
+    var listaPetsView = _getPetsView();
+    print(listaPetsView);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
